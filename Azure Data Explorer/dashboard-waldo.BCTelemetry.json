@@ -1,7 +1,5 @@
 {
     "$schema": "https://dataexplorer.azure.com/static/d/schema/60/dashboard.json",
-    "id": "750a8716-a4d1-43bf-b6d1-c74e93b0c34e",
-    "eTag": "c049bc52-b5fd-47cf-a7a0-c825390590bf",
     "schema_version": "60",
     "title": "waldo's BCTelemetry Dashboard",
     "pagesNavWidth": 223,
@@ -945,8 +943,8 @@
                 "pie__orderBy": "size",
                 "pie__kind": "pie",
                 "pie__topNSlices": null,
-                "crossFilter": [],
                 "legendLocation": "bottom",
+                "crossFilter": [],
                 "drillthrough": []
             }
         },
@@ -986,8 +984,8 @@
                 "pie__orderBy": "size",
                 "pie__kind": "pie",
                 "pie__topNSlices": null,
-                "crossFilter": [],
                 "legendLocation": "bottom",
+                "crossFilter": [],
                 "drillthrough": []
             }
         },
@@ -1175,8 +1173,8 @@
                 "pie__orderBy": "size",
                 "pie__kind": "pie",
                 "pie__topNSlices": null,
-                "crossFilter": [],
                 "legendLocation": "bottom",
+                "crossFilter": [],
                 "drillthrough": []
             }
         },
@@ -1777,8 +1775,8 @@
                 "verticalLine": "",
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
-                "crossFilter": [],
                 "legendLocation": "bottom",
+                "crossFilter": [],
                 "drillthrough": [],
                 "selectedDataOnLoad": {
                     "all": true,
@@ -2650,8 +2648,8 @@
                 "verticalLine": "",
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
-                "crossFilter": [],
                 "legendLocation": "bottom",
+                "crossFilter": [],
                 "drillthrough": [],
                 "selectedDataOnLoad": {
                     "all": true,
@@ -3727,8 +3725,8 @@
                 "verticalLine": "",
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
-                "crossFilter": [],
                 "legendLocation": "bottom",
+                "crossFilter": [],
                 "drillthrough": [],
                 "selectedDataOnLoad": {
                     "all": true,
@@ -8371,12 +8369,11 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "let Environments = \n    traces\n    | where timestamp between (_startTime .. _endTime)\n    | extend aadTenantId = tostring(customDimensions.aadTenantId)\n    | extend environmentName = tostring(customDimensions.environmentName)\n    | summarize by aadTenantId, environmentName;\nEnvironments\n| join kind=rightouter entraTenantIdDescriptions on $left.aadTenantId == $right.entraTenantId\n| summarize by environmentName;",
+            "text": "traces\n| where timestamp between (_startTime .. _endTime)\n| extend aadTenantId = tostring(customDimensions.aadTenantId)\n| extend environmentName = tostring(customDimensions.environmentName)\n| summarize by environmentName;",
             "id": "a4426a6f-dfd5-43a4-b8fb-68c8cbb6da83",
             "usedVariables": [
                 "_endTime",
-                "_startTime",
-                "entraTenantIdDescriptions"
+                "_startTime"
             ]
         },
         {
